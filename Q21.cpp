@@ -1,5 +1,6 @@
-#include <vector>
 #include <iostream>
+#include <string>
+#include <list>
 #include <algorithm>
 using namespace std;
 template<class T> struct Out {
@@ -8,17 +9,21 @@ Out(ostream & o): out(o) {}
 void operator() (const T & val) { out<<val<<" ";} };
 
 int main() {
-int t[]={3,2,4,1,5,10,9,7,8,6};
-vector<int> v1(t, t+10);
-sort(v1.begin(), v1.end(), greater<int>());
-cout<<min_element(v1.begin(), v1.end());
+list<int> l;
+for(;!cin.bad();)
+{
+int i;
+cin>>i;
+l.push_back(i);
+}
+for_each(l.begin(),l.end(),Out<int>(cout));
 return 0;
 }
 
 //Outputs
 
-//A : 3
-//B : 1
-//C : 6
-//D : 10
-//E : compilation error
+//A : 1 2 3
+//B : 1 3 3 end
+//C : 1
+//D : compilation error
+//E : program runs forever without output
